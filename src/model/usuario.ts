@@ -1,3 +1,4 @@
+import { UserRole } from "../enums/usuario_role";
 import { connection } from "../infra/connection";
 
 export type Usuario = {
