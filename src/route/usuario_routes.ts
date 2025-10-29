@@ -5,7 +5,7 @@ const userRoutes = Router();
 
 userRoutes.get('/user/login', show_login);
 userRoutes.get('/user/list', show_lista);
-userRoutes.post('/user/register', registrar);
+userRoutes.post('/usuario/registrar', registrar);
 
 export {
     userRoutes

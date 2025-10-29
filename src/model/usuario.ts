@@ -9,7 +9,7 @@ export type Usuario = {
 }
 
 export async function inserir(usuario:Usuario) {
-    await connection.query('INSERT INTO usuario(nome, email, senha) VALUES ($1, $2, %3);',
+    await connection.query('INSERT INTO usuario(nome, email, senha) VALUES ($1, $2, $3);',
     [
         usuario.nome,
         usuario.email,

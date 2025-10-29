@@ -45,7 +45,7 @@ export async function registrar(req: Request, res: Response) {
         senha
     };
 
-    await inserir (user);
+    await inserir(user);
 
     res.render('login', {
         message: {
