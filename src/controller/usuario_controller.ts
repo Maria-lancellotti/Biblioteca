@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import { Usuario, inserirEmail, inserir } from "../model/usuario";
+import { Usuario, inserirEmail, inserir, inserirEmailAndSenha } from "../model/usuario";
 
 
 export function show_login (req: Request, res: Response) {
@@ -55,3 +55,31 @@ export async function registrar(req: Request, res: Response) {
         }
     });
 }   
+
+export async function  login(req: Request, res: Response) {
+    const { email, senha } = req.body;
+
+    if( !email || !senha) {
+        return res.render('login', {
+            message: {
+                type: 'error',
+                value: 'Preencha todos os campos corretamente!',
+                title: 'Dados inválidos'
+            }
+        });
+    }
+
+    const usuario = await inserirEmailAndSenha(email, senha);
+
+    if( !usuario) {
+        return res.render('login', {
+            message: {
+                type: 'error',
+                value: 'Email ou senha incorretos',
+                title: 'Dados inválidos'
+            }
+        });
+    }
+
+    return res.redirect('/adm');
+}

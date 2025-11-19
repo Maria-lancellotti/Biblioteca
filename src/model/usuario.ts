@@ -38,3 +38,11 @@ export async function inserirEmail(email:string) {
     [email]);
     return rows[0];
 }    
+
+export async function inserirEmailAndSenha(email : string, senha : string) {
+    const { rows } = await connection.query  (
+        'SELECT * FROM usuario WHERE email=$1 AND password=$2',
+        [email, senha]
+    );
+    return rows [0];
+}
